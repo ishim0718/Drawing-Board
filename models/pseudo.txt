@@ -1,0 +1,38 @@
+User:
+id: int, no null, auto-inc, pri-key
+name: string, no null
+email: string, no null, unique, validate isEmail
+password: string, no null, validate length
+
+Post:
+id; int, no null, auto-inc, pri-key
+title; string, no null
+photo; string, validate isURL
+date: date, no null, default:now
+tag: string, no null
+user: related to User
+
+Comment:
+id - same
+category: related to category
+comment: string, no null,
+date: date, no null, default:now
+
+Category:
+id - same
+name: string, pri-key
+
+Tag:
+id - same
+name: string, prikey
+
+Update:
+id - same
+update-version; int, no null
+update-content: string, no null
+
+
+NOTES:
+if logged in allow Post
+if logged in allow Comment
+if logged in as user who posted allow update
