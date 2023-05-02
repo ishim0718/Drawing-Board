@@ -1,0 +1,47 @@
+<aside id="search">
+    <div>Search Bar</div>
+    <div>
+        <h2>Tags</h2>
+        <ul>
+            {{!-- Iterates through tags --}}
+            <li>tag 1</li>
+        </ul>
+    </div>
+</aside>
+<section id="post-info">
+    <div class="post-description">
+        <div class="flexbox">
+            {{!-- insert specific post title --}}
+            <div>Post-Title</div>
+            {{!-- insert specific post date --}}
+            <div>Date</div>
+            {{!-- insert specific post tag --}}
+            <div>Tag</div>
+        </div>
+        <img src="" alt="Invention Image">
+    </div>
+    <div class="post-comments">
+        <form id="add-comment">
+            <select id="add-comment-tag">
+                {{!-- Iterates through tags --}}
+                <option value="tag 1">tag 1</option>
+            </select>
+            <input type="text" placeholder="Write a comment..." id="add-comment-text">
+            <input type="button" value="Post" id="add-comment-submit">
+        </form>
+    </div>
+</section>
+<aside id="updates">
+    <div>
+        <h2>Updates</h2>
+        <div class="flexbox">
+            {{!-- iterate through updates --}}
+            <div>
+                {{!-- insert date of update --}}
+                <p>Date</p>
+                {{!-- insert text describing update --}}
+                <p>Content</p>
+            </div>     
+        </div>
+    </div>
+</aside>
