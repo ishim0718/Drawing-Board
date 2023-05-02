@@ -1703,3 +1703,25 @@ form [type='radio'] {
     align-content: center;
   }
 }
+
+/* Personal added styles */
+.home-post-image{
+  height: 200px;
+  width: 100%;
+}
+
+.nav-links{
+  list-style: none;
+}
+.nav-links li{
+  display: inline;
+  padding:15px;
+  background-color: #1bbc9b;
+}
+.nav-links li:hover{
+  background-color: white;
+}
+header{
+  padding-top: 125px;
+  padding-bottom: 125px;
+}
