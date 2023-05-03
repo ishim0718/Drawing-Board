@@ -1756,7 +1756,8 @@ body{
 }
 header,
 aside,
-section{
+section,
+#login-container{
   background-color: lightgray;
   border: 2px solid black;
 }
@@ -1766,4 +1767,8 @@ section{
 img{
   border-radius: 5px;
   border: 2px solid black;
+}
+label{
+  min-width: 84px;
+  text-align:right;
 }
