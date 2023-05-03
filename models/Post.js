@@ -37,10 +37,10 @@ Post.init(
         },
           tag: {
             type: DataTypes.STRING,
-            references: {
-                model: 'tag',
-                key: 'id',
-            },
+            // references: {
+            //     model: 'tag',
+            //     key: 'id',
+            // },
         },
 
     },

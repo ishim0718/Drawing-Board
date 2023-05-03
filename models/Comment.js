@@ -27,13 +27,20 @@ Comment.init(
         key: 'id',
       },
     },
-    category: {
-        type: DataTypes.STRING,
-        references: {
-            model: 'category',
-            key: 'id',
-        },
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'post',
+        key: 'id',
+      },
     },
+    // category_id: {
+    //   type: DataTypes.STRING,
+    //   references: {
+    //       model: 'category',
+    //       key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,
