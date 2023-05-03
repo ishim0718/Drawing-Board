@@ -3,10 +3,10 @@
         <div class="text-center"><h2>Search Bar</h2></div>
         <div class="text-center">
             <h3>Tags</h3>
-            <ul class="search-tags">
+            <div id="search-tags" class="flex-row flex-no-wrap justify-center">
                 <!-- {{!-- Iterates through tags --}} -->
-                <li>tag 1</li>
-            </ul>
+                <div>tag 1</div>
+            </div>
         </div>
     </aside>
     <section id="post-info" class="p-2">
@@ -24,11 +24,11 @@
         <div class="post-comments">
             <form id="add-comment">
                 <div class="flex-row flex-no-wrap justify-center mt-5">
-                    <select id="add-comment-tag">
+                    <select id="add-comment-tag" class="p-1 pr-4">
                         <!-- {{!-- Iterates through tags --}} -->
                         <option value="tag 1">tag 1</option>
                     </select>
-                    <input type="text" placeholder="Write a comment..." id="add-comment-text" class="ml-2">    
+                    <textarea placeholder="Write a comment..." id="add-comment-text" class="ml-2"></textarea>    
                 </div>
                 <div class="flex-row flex-no-wrap justify-center mt-5">
                     <input type="button" value="Post" id="add-comment-submit" class="btn">    
