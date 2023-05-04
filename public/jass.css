@@ -1710,18 +1710,60 @@ form [type='radio'] {
   width: 100%;
 }
 
-.nav-links{
+.nav-links,
+.search-tags{
   list-style: none;
+}
+.search-tags li{
+  display: inline-block;
+  margin-right: -4px;
 }
 .nav-links li{
   display: inline;
-  padding:15px;
-  background-color: #1bbc9b;
 }
-.nav-links li:hover{
+.nav-links li a{
+  color:purple;
+  font-size: 22px;
+  padding:10px;
+  background-color: #1bbc9b;
+  text-decoration: none;
+  border:1px solid black;
+  border-radius: 2px;
+}
+.nav-links li a:hover{
   background-color: white;
 }
 header{
-  padding-top: 125px;
-  padding-bottom: 125px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+aside,
+section{
+  height: 700px;
+  width:33%;
+}
+body{
+  background-color: #1bbc9b;
+  font-family: 'Times New Roman', Times, serif;
+  min-width: 975px;
+}
+#add-comment-tag{
+  height: fit-content;
+}
+#add-comment-text:focus{
+  width: 80%;
+  min-height: 200px;
+}
+header,
+aside,
+section{
+  background-color: lightgray;
+  border: 2px solid black;
+}
+#main-container{
+  gap:25px;
+}
+img{
+  border-radius: 5px;
+  border: 2px solid black;
 }

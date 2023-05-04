@@ -1,47 +1,53 @@
-<aside id="search" class="p-5">
-    <div>Search Bar</div>
-    <div>
-        <h2>Tags</h2>
-        <ul>
-            {{!-- Iterates through tags --}}
-            <li>tag 1</li>
-        </ul>
-    </div>
-</aside>
-<section id="post-info" class="p-5">
-    <div class="post-description" >
-        <div class="flex-row flex-no-wrap">
-            {{!-- insert specific post title --}}
-            <div class="col-4">Post-Title</div>
-            {{!-- insert specific post date --}}
-            <div class="col-4">Date</div>
-            {{!-- insert specific post tag --}}
-            <div class="col-4">Tag</div>
+<div class="flex-row flex-no-wrap justify-center" id="main-container">
+    <aside id="search" class="p-2">
+        <div class="text-center"><h2>Search Bar</h2></div>
+        <div class="text-center">
+            <h3>Tags</h3>
+            <div id="search-tags" class="flex-row flex-no-wrap justify-center">
+                <!-- {{!-- Iterates through tags --}} -->
+                <div>tag 1</div>
+            </div>
         </div>
-        <img src="" alt="Invention Image"class="home-post-image">
-    </div>
-    <div class="post-comments">
-        <form id="add-comment">
-            <select id="add-comment-tag">
-                {{!-- Iterates through tags --}}
-                <option value="tag 1">tag 1</option>
-            </select>
-            <input type="text" placeholder="Write a comment..." id="add-comment-text">
-            <input type="button" value="Post" id="add-comment-submit" class="btn">
-        </form>
-    </div>
-</section>
-<aside id="updates" class="p-5">
-    <div>
-        <h2>Updates</h2>
-        <div class="flex-column flex-no-wrap">
-            {{!-- iterate through updates --}}
-            <div>
-                {{!-- insert date of update --}}
-                <p>Date</p>
-                {{!-- insert text describing update --}}
-                <p>Content</p>
-            </div>     
+    </aside>
+    <section id="post-info" class="p-2">
+        <div class="post-description" >
+            <div class="flex-row flex-no-wrap">
+                <!-- {{!-- insert specific post title --}} -->
+                <div class="col-4 text-center"><h2>Post-Title</h2></div>
+                <!-- {{!-- insert specific post date --}} -->
+                <div class="col-4 text-center m-auto">Date</div>
+                <!-- {{!-- insert specific post tag --}} -->
+                <div class="col-4 text-center m-auto">Tag</div>
+            </div>
+            <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="home-post-image mt-3">
         </div>
-    </div>
-</aside>
+        <div class="post-comments">
+            <form id="add-comment">
+                <div class="flex-row flex-no-wrap justify-center mt-5">
+                    <select id="add-comment-tag" class="p-1 pr-4">
+                        <!-- {{!-- Iterates through tags --}} -->
+                        <option value="tag 1">tag 1</option>
+                    </select>
+                    <textarea placeholder="Write a comment..." id="add-comment-text" class="ml-2"></textarea>    
+                </div>
+                <div class="flex-row flex-no-wrap justify-center mt-5">
+                    <input type="button" value="Post" id="add-comment-submit" class="btn">    
+                </div>
+            </form>
+        </div>
+    </section>
+    <aside id="updates" class="text-center p-2">
+        <div>
+            <h2>Updates</h2>
+            <div class="flex-column flex-no-wrap">
+                <!-- {{!-- iterate through updates --}} -->
+                <div>
+                    <!-- {{!-- insert date of update --}} -->
+                    <p>Date</p>
+                    <!-- {{!-- insert text describing update --}} -->
+                    <p>Content</p>
+                </div>     
+            </div>
+        </div>
+    </aside>
+</div>
