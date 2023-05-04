@@ -31,16 +31,16 @@ Post.init(
               key: 'id',
             },
         },
-          photo: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-          tag: {
-            type: DataTypes.STRING,
-            // references: {
-            //     model: 'tag',
-            //     key: 'id',
-            // },
+        //   photo: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
+        tag_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'tag',
+                key: 'id',
+            },
         },
 
     },
