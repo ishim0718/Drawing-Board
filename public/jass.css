@@ -1761,8 +1761,20 @@ section,
   background-color: lightgray;
   border: 2px solid black;
 }
-#main-container{
+.user-post{
+  background-color: white;
+  width: 80%;
+  height: 150px;
+  border-radius: 15px;
+}
+.gap-15{
+  gap:15px;
+}
+.gap-25{
   gap:25px;
+}
+.gap-80{
+  gap:80px;
 }
 img{
   border-radius: 5px;
@@ -1771,4 +1783,14 @@ img{
 label{
   min-width: 84px;
   text-align:right;
+}
+.profile-pic{
+  width: 80%;
+  height: 200px;
+  border-radius: 150px;
+  border-width: 3px;
+}
+.profile-attributes{
+  font-size: larger;
+  font-weight: bold;
 }
