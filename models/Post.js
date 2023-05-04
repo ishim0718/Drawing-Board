@@ -31,12 +31,12 @@ Post.init(
               key: 'id',
             },
         },
-          photo: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-          tag: {
-            type: DataTypes.STRING,
+        //   photo: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
+        tag_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'tag',
                 key: 'id',
