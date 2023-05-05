@@ -1757,7 +1757,8 @@ body{
 header,
 aside,
 section,
-#login-container{
+#login-container,
+.primary-container{
   background-color: lightgray;
   border: 2px solid black;
 }
@@ -1793,4 +1794,15 @@ label{
 .profile-attributes{
   font-size: larger;
   font-weight: bold;
+}
+.comment-section{
+  width: 80%;
+}
+.comment-user-link{
+  font-weight: bolder;
+  font-size: 18px;
+}
+.post-view-pic{
+  width: 70%;
+  height: 200px;
 }

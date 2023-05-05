@@ -1,0 +1,26 @@
+<div class="flex-column flex-no-wrap align-center gap-15 primary-container p-5">
+    <h2>Post Title</h2>
+    <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="post-view-pic mt-3">
+    <p>Description...</p>
+    <div class="comment-section flex-column flex-no-wrap gap-15">
+        <h3 class="text-center">Comments</h3>
+        <div class="comment">
+            <span class="comment-user-link">User#1</span><span>: This could use more color.</span>
+        </div>
+        <div class="comment">
+            <span class="comment-user-link">User#2</span><span>: I agree with #1.</span>
+        </div>
+    </div>
+    <form id="add-comment">
+        <div class="flex-row flex-no-wrap justify-center mt-5">
+            <select id="add-comment-tag" class="p-1 pr-4">
+                <!-- {{!-- Iterates through tags --}} -->
+                <option value="tag 1">tag 1</option>
+            </select>
+            <textarea placeholder="Write a comment..." id="add-comment-text" class="ml-2"></textarea>    
+        </div>
+        <div class="flex-row flex-no-wrap justify-center mt-5">
+            <input type="button" value="Post" id="add-comment-submit" class="btn">    
+        </div>
+    </form>
+</div>
