@@ -1,6 +1,6 @@
 // Import necessary packages and models
 const router = require("express").Router();
-const { Post, User, Comment } = require("../models");
+const { Post, User, Comment } = require('../models');
 const withAuth = require("../utils/auth");
 
 // Route to render homepage
@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   try {
         // Find all posts with associated usernames
     const postData = await Post.findAll({
-      include: [{ model: User, attributes: ["username"] }],
+      include: [{ model: User, attributes: ["name"] }],
     });
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
