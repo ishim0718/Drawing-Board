@@ -8,6 +8,7 @@ const exphbs = require("express-handlebars");
 const helpers = require("./utils/auth")
 const hbs = exphbs.create({ helpers });
 
+
 // Create express app and setting port
 const app = express();
 const PORT = process.env.PORT || 3001;
