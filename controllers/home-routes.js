@@ -2,6 +2,21 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require("../utils/auth");
+const {Storage} = require('@google-cloud/storage')
+const Multer = require('multer')
+
+const multer = Multer({
+    storage: Multer.memoryStorage(),
+})
+
+let pid = "sound-psyche-385917"
+let fileName = "main-key"
+const storage = new Storage({
+    pid,
+    fileName
+})
+
+const bucket = storage.bucket('inventor-website-123321')
 
 // Route to render homepage
 router.get("/", async (req, res) => {
@@ -115,5 +130,42 @@ router.get("/editpost/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+/*Begining of Corbin's code*/
+
+// placed in /new-post
+router.get('/new-post', (req, res)=>{
+  try {
+    res.render("new-post", {
+      logged_in: req.session.logged_in,
+    });
+    } catch (err) {
+        // If there is an error, return 500 status code and error message
+    res.status(500).json(err);
+    }
+})
+
+// placed in /new-post
+router.post("/new-post", multer.single('imgfile'),(req, res)=>{
+  console.log("start POST route")
+  try{
+      if(req.file){
+          //console.log(req.file)
+          const blob = bucket.file(req.file.originalname)
+          //console.log(blob)
+          const stream = blob.createWriteStream()
+
+          stream.on('finish', ()=>{
+              res.status(200).json("Image posted.")
+          })
+          stream.end(req.file.buffer)
+      }
+  }catch(err){
+      res.status(500).json(err)
+      console.log("wtf")
+  }
+})
+/*End of Corbin's code*/
+
 // module exports router
 module.exports = router;
