@@ -13,24 +13,35 @@ async function getCloudImage(){
     let image = document.getElementById("post-image")
     image.src = data.items[0].mediaLink
 }
-getCloudImage()
+//getCloudImage()
 async function postCloudImage(){
-    let request = await fetch("https://storage.googleapis.com/storage/v1/b/inventor-website-123321/o",{
-        method:"POST",
-        mode: "cors",
-        body:{},
-        headers:{
-            "Authorization": "Bearer "+key,
-            "Content-Type": "image/jpg"
-        },
-        body:{
-            
-        }
-    })
+    const file = document.getElementById('new-image').files[0]
+    //console.log(file)
+    let blob = file.slice(0, file.size, file.type)
+    //console.log(blob)
+    newFile = new File([blob], file.name, {type:file.type})
+    //console.log(newFile)
+
+    let formData = new FormData()
+    formData.append('imgfile', newFile)
+    console.log(formData)
+    try{
+        let request = await fetch("/new-post",{
+            method:"POST",
+            mode: "cors",
+            body:formData
+        })
+        .then(res=>res.text())
+        .then(x=>console.log(x))
+    }catch(err){
+
+    }
+    
 }
+document.getElementById('submit-new-post').onclick = postCloudImage
 async function createAccount(){
     try{
-        let account = await fetch("http://localhost:3001/signup",{
+        let account = await fetch("/signup",{
             method:"POST",
             body:{
                 username: document.getElementById("username").value,
@@ -40,7 +51,7 @@ async function createAccount(){
         })
     }catch(err){
         // display error message
-
+        console.log(err)
     }
     
 }

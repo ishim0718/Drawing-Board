@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
+
+
 // Get all posts with associated username
 router.get("/", async (req, res) => {
   try {
@@ -82,5 +84,8 @@ router.delete("/:id", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
 // Export the router
 module.exports = router;
