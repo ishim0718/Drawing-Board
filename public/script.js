@@ -50,7 +50,7 @@ async function createAccount(){
         let account = await fetch("/signup",{
             method:"POST",
             body:{
-                username: document.getElementById("username").value,
+                name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value
             }
@@ -66,7 +66,7 @@ async function signIn(){
         let account = await fetch("/login",{
             method:"POST",
             body:{
-                username: document.getElementById("username").value,
+                name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value
             }
