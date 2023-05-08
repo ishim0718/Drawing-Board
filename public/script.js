@@ -106,6 +106,32 @@ async function searchPosts(){
         
     }
 }
+async function createAccount(){
+    let email = document.getElementById('email').value
+    console.log("email: "+email)
+    let password = document.getElementById('password').value
+    console.log("password: "+password)
+    let confirmPassword = document.getElementById('confirm-password').value
+    // checks if both passwords are correct
+    if(password!=confirmPassword){
+        return
+    }
+    try{
+        let account = await fetch("/api/users/signup",{
+            method:"POST",
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                name: email,
+                email: email,
+                password: password
+            })
+        }).catch(err=>console.log(err))
+        console.log("Account created.")
+    }catch(err){
+        // display error message
+        console.log(err)
+    }
+}
 
 if(addCommentSubmit){
     addCommentSubmit.onclick = submitComment
@@ -120,5 +146,5 @@ if(searchButton){
     searchButton.onclick = searchPosts
 }
 if(createAccountSubmit){
-    createAccountSubmit.onclick
+    createAccountSubmit.onclick = createAccount
 }
