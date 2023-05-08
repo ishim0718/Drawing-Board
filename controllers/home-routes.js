@@ -1,6 +1,6 @@
 // Import necessary packages and models
 const router = require("express").Router();
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Tag } = require('../models');
 const withAuth = require("../utils/auth");
 const {Storage} = require('@google-cloud/storage')
 const Multer = require('multer')
@@ -165,6 +165,35 @@ router.post("/new-post", multer.single('imgfile'),(req, res)=>{
       console.log("wtf")
   }
 })
+
+
+router.get("/search", async (req, res)=>{
+  //if (req.session.logged_in) {
+    try{
+      let params = {}
+      if(req.body && req.body.name && req.body.name!=''){
+        params.name = req.body.name
+      }
+      if(req.body && req.body.tag){
+        params.tag = req.body.tag
+      }
+      console.log("starting query")
+      const postData = await Post.findAll({
+        include: [
+          { model: User, attributes: ["name"] },
+          { model: Tag, attributes: ["name"] }
+      ],
+      }).catch(err=>console.log(err))
+      const posts = postData.map(post=> post.get({ plain: true }));
+      console.log("Post results:"+posts)
+      res.render("search", {posts})
+    }catch(err){
+      res.status(500).json(err)
+    }
+    
+ // }
+})
+
 /*End of Corbin's code*/
 
 // module exports router

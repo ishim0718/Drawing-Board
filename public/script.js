@@ -1,5 +1,11 @@
 const key = "ya29.a0AWY7CkmHZL5F1fdNNkcOk_dIc9t2F1iuu4wKbVVsM8CW48jYiHV2a8UTuKbq50bpD9aHPQx4HbzSh90_sSdF2Kob8eJmmYcmU9NPkYtKpi6B_pL_Xu_3gevtMhyhWRnW-ppLStlxkMcUWHIhbxaW3XU8sORjDoNLaCgYKAUQSARMSFQG1tDrpRIKSZsaaHgpjzzkPdg_uKA0167"
 
+const addCommentSubmit = document.getElementById('add-comment-submit')
+const loginSubmit = document.getElementById('login-submit')
+const submitNewPost = document.getElementById('submit-new-post')
+const searchButton = document.getElementById('search-button')
+const createAccountSubmit = document.getElementById('create-account-submit')
+
 async function getCloudImage(){
     let request = await fetch("https://storage.googleapis.com/storage/v1/b/inventor-website-123321/o",{
         method:"GET",
@@ -38,7 +44,7 @@ async function postCloudImage(){
     }
     
 }
-document.getElementById('submit-new-post').onclick = postCloudImage
+
 async function createAccount(){
     try{
         let account = await fetch("/signup",{
@@ -57,7 +63,7 @@ async function createAccount(){
 }
 async function signIn(){
     try{
-        let account = await fetch("http://localhost:3001/login",{
+        let account = await fetch("/login",{
             method:"POST",
             body:{
                 username: document.getElementById("username").value,
@@ -73,7 +79,7 @@ async function signIn(){
 }
 async function submitComment(){
     try{
-        let account = await fetch("http://localhost:3001/api/comment",{
+        let account = await fetch("/comments",{
             method:"POST",
             body:{
                category: document.getElementById("add-comment-tag").value,
@@ -84,4 +90,35 @@ async function submitComment(){
         // display error message
         
     }
+}
+async function searchPosts(){
+    try{
+        let account = await fetch("/api/post",{
+            method:"GET",
+            body:{
+                name: document.getElementById("search-key").value,
+                tag: document.getElementById("search-tag").value
+            }
+        })
+
+    }catch(err){
+        // display error message
+        
+    }
+}
+
+if(addCommentSubmit){
+    addCommentSubmit.onclick = submitComment
+}
+if(loginSubmit){
+    loginSubmit.onclick = signIn
+}
+if(submitNewPost){
+    submitNewPost.onclick = postCloudImage
+}
+if(searchButton){
+    searchButton.onclick = searchPosts
+}
+if(createAccountSubmit){
+    createAccountSubmit.onclick
 }
