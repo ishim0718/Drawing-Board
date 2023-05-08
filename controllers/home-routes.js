@@ -166,6 +166,7 @@ router.post("/new-post", multer.single('imgfile'),(req, res)=>{
   }
 })
 
+
 router.get("/search", async (req, res)=>{
   //if (req.session.logged_in) {
     try{
@@ -192,6 +193,7 @@ router.get("/search", async (req, res)=>{
     
  // }
 })
+
 /*End of Corbin's code*/
 
 // module exports router
