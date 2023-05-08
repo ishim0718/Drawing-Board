@@ -1,3 +1,4 @@
+
 <div class="flex-row flex-no-wrap justify-center" id="main-container">
     <aside id="search" class="p-2">
         <div class="text-center"><h2>Search Bar</h2></div>
@@ -9,15 +10,16 @@
             </div>
         </div>
     </aside>
+{{#each posts as |post|}}
     <section id="post-info" class="p-2">
         <div class="post-description" >
             <div class="flex-row flex-no-wrap">
                 <!-- {{!-- insert specific post title --}} -->
-                <div class="col-4 text-center"><h2>Post-Title</h2></div>
+                <div class="col-4 text-center"><h2>{{post.title}}</h2></div>
                 <!-- {{!-- insert specific post date --}} -->
-                <div class="col-4 text-center m-auto">Date</div>
+                <div class="col-4 text-center m-auto">Created on: {{format_date post.date_created}}</div>
                 <!-- {{!-- insert specific post tag --}} -->
-                <div class="col-4 text-center m-auto">Tag</div>
+                <div class="col-4 text-center m-auto">Tags: {{tag.name}}</div>
             </div>
             <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="home-post-image mt-3">
         </div>
@@ -36,6 +38,7 @@
             </form>
         </div>
     </section>
+    {{/each}}
     <aside id="updates" class="text-center p-2">
         <div>
             <h2>Updates</h2>
