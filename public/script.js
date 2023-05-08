@@ -21,6 +21,23 @@ async function getCloudImage(){
     image.src = data.items[0].mediaLink
 }
 //getCloudImage()
+
+async function postInvention(){
+    try{
+        let account = await fetch("/api/posts",{
+            method:"POST",
+            body:{
+                username: document.getElementById("new-title").value,
+                email: document.getElementById("new-image").value,
+                password: document.getElementById("new-description").value,
+                tag_id: document.getElementById("new-tag").value
+            }
+        })
+    }catch(err){
+        // display error message
+        console.log(err)
+    }
+}
 async function postCloudImage(){
     const file = document.getElementById('new-image').files[0]
     //console.log(file)

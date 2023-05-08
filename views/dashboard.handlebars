@@ -8,8 +8,6 @@
     </aside>
     <section class="col-7 p-5 flex-column flex-no-wrap align-center gap-15" id="user-posts">
         <!-- iterate through previous projects -->
-        {{logged_in}}
-        {{post}}
         {{#each post as |p|}}
             {{p.name}}
         {{/each}}

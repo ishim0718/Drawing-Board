@@ -43,10 +43,10 @@ router.get("/post/:id", withAuth, async (req, res) => {
         // Find post by ID with associated username and comments with associated usernames
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["username"] },
+        { model: User, attributes: ["name"] },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["username"] }],
+          include: [{ model: User, attributes: ["name"] }],
         },
       ],
     });
@@ -73,7 +73,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts)
-    
+
     res.render("dashboard", {
       posts,
       logged_in: req.session.logged_in,
