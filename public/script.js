@@ -5,6 +5,7 @@ const loginSubmit = document.getElementById('login-submit')
 const submitNewPost = document.getElementById('submit-new-post')
 const searchButton = document.getElementById('search-button')
 const createAccountSubmit = document.getElementById('create-account-submit')
+const logoutButton = document.getElementById('logout')
 
 async function getCloudImage(){
     let request = await fetch("https://storage.googleapis.com/storage/v1/b/inventor-website-123321/o",{
@@ -62,15 +63,19 @@ async function createAccount(){
     
 }
 async function signIn(){
+    let email = document.getElementById("email").value
+    let password = document.getElementById("password").value
+    console.log("email: "+email)
+    console.log("password: "+password)
     try{
-        let account = await fetch("/login",{
+        let account = await fetch("/api/users/login",{
             method:"POST",
-            body:{
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            }
-        })
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                email: email,
+                password: password
+            })
+        }).catch(err=>console.log("Error message: "+err))
     }catch(err){
         // display error message
         
@@ -132,6 +137,17 @@ async function createAccount(){
         console.log(err)
     }
 }
+async function logout(){
+    try{
+        let account = await fetch("/api/users/logout",{
+            method:"POST",
+        })
+        
+    }catch(err){
+        // display error message
+        console.log(err)
+    }
+}
 
 if(addCommentSubmit){
     addCommentSubmit.onclick = submitComment
@@ -147,4 +163,7 @@ if(searchButton){
 }
 if(createAccountSubmit){
     createAccountSubmit.onclick = createAccount
+}
+if(logoutButton){
+    logoutButton.onclick = logout
 }

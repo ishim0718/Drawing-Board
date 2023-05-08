@@ -37,8 +37,11 @@ router.post("/signup", async (req, res) => {
 });
 // Route to log in a user
 router.post("/login", async (req, res) => {
+  console.log("req.body: "+JSON.stringify(req.body))
+  console.log("req.body.email: "+req.body.email)
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const userData = await User.findOne({ where: { email: req.body.email} });
+    console.log(userData)
 
     if (!userData) {
       res
@@ -72,6 +75,7 @@ router.post("/login", async (req, res) => {
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
+      res.redirect("/")
       res.status(204).end();
     });
   } else {
