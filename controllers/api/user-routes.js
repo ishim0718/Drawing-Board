@@ -15,11 +15,12 @@ router.get("/", (req, res) => {
 });
 // Route to sign up a new user
 router.post("/signup", async (req, res) => {
+  console.log("req body: "+ JSON.stringify(req.body))
   try {
-    const newUser = new User();
-    newUser.username = req.body.username;
-    newUser.email = req.body.email;
-    newUser.password = req.body.password;
+    const newUser = User.build({ name: req.body.name, email: req.body.email, password: req.body.password});
+    // newUser.name = req.body.name;
+    // newUser.email = req.body.email;
+    // newUser.password = req.body.password;
 
     const userData = await newUser.save();
 
