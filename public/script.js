@@ -26,12 +26,12 @@ async function postInvention(){
     try{
         let account = await fetch("/api/posts",{
             method:"POST",
-            body:{
-                username: document.getElementById("new-title").value,
-                email: document.getElementById("new-image").value,
-                password: document.getElementById("new-description").value,
-                tag_id: document.getElementById("new-tag").value
-            }
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                title: document.getElementById("new-title").value,
+                description: document.getElementById("new-desc").value,
+                tag_id: parseInt(document.getElementById("new-tag").value)
+            })
         })
     }catch(err){
         // display error message
@@ -92,7 +92,11 @@ async function signIn(){
                 email: email,
                 password: password
             })
-        }).catch(err=>console.log("Error message: "+err))
+        })//.catch(err=>console.log("Error message: "+err))
+        if(account.ok){
+            console.log("ok")
+            document.location.replace("/dashboard")
+        }
     }catch(err){
         // display error message
         
@@ -173,7 +177,7 @@ if(loginSubmit){
     loginSubmit.onclick = signIn
 }
 if(submitNewPost){
-    submitNewPost.onclick = postCloudImage
+    submitNewPost.onclick = postInvention
 }
 if(searchButton){
     searchButton.onclick = searchPosts

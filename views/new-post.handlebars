@@ -5,9 +5,9 @@
             <input type="text" id="new-title" class="ml-5">
             <select id="new-tag">
             <!-- iterate existing tags-->
-                <option>Tag 1</option>
-                <option>Tag 2</option>
-                <option>Tag 3</option>
+                {{#each tags as |t|}}
+                <option value="{{t.id}}">{{t.name}}</option>
+                {{/each}}
             </select><br>
 
             <label>Invention Photo</label>

@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
         .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(404).json(err);
   }
 });
 // Route to log out a user

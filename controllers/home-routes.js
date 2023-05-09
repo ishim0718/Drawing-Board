@@ -68,7 +68,10 @@ router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
-      include: [{ model: User, attributes: ["name"] }],
+      include: [
+        { model: User, attributes: ["name"] },
+        { model: Tag, attributes: ["name"] }
+    ],
     });
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -113,10 +116,10 @@ router.get("/editpost/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["username"] },
+        { model: User, attributes: ["name"] },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["username"] }],
+          include: [{ model: User, attributes: ["name"] }],
         },
       ],
     });
@@ -135,9 +138,12 @@ router.get("/editpost/:id", async (req, res) => {
 /*Begining of Corbin's code*/
 
 // placed in /new-post
-router.get('/new-post', (req, res)=>{
+router.get('/new-post', async (req, res)=>{
   try {
-    res.render("new-post", {
+    const data = await Tag.findAll()
+    const tags = data.map(tag=> tag.get({ plain: true }));
+    console.log("Tags: "+tags)
+    res.render("new-post", {tags,
       logged_in: req.session.logged_in,
     });
     } catch (err) {
