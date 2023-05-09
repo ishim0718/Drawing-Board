@@ -1744,6 +1744,9 @@ section{
 }
 body{
   background-color: #1bbc9b;
+  background-image: url("/images/pexels-iurii-laimin-9184517.jpg");
+  background-repeat: no-repeat;
+  background-size: inherit;
   font-family: 'Times New Roman', Times, serif;
   min-width: 975px;
 }
