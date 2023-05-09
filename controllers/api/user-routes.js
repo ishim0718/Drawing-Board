@@ -37,8 +37,11 @@ router.post("/signup", async (req, res) => {
 });
 // Route to log in a user
 router.post("/login", async (req, res) => {
+  console.log("req.body: "+JSON.stringify(req.body))
+  console.log("req.body.email: "+req.body.email)
   try {
-    const userData = await User.findOne({ where: { username: req.body.name } });
+    const userData = await User.findOne({ where: { email: req.body.email} });
+    console.log(userData)
 
     if (!userData) {
       res
@@ -47,7 +50,8 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password.toString());
+    console.log(validPassword)
 
     if (!validPassword) {
       res
@@ -65,13 +69,14 @@ router.post("/login", async (req, res) => {
         .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(404).json(err);
   }
 });
 // Route to log out a user
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
+      res.redirect("/")
       res.status(204).end();
     });
   } else {

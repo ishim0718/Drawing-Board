@@ -25,11 +25,14 @@ router.get("/", async (req, res) => {
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["name"] }],
     });
+    const tagData = await Tag.findAll()
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
     // Render homepage template with posts and login status
     res.render("homepage", {
       posts,
+      tags,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -68,10 +71,14 @@ router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
-      include: [{ model: User, attributes: ["name"] }],
+      include: [
+        { model: User, attributes: ["name"] },
+        { model: Tag, attributes: ["name"] }
+    ],
     });
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts)
 
     res.render("dashboard", {
       posts,
@@ -134,9 +141,12 @@ router.get("/edit-post/:id", async (req, res) => {
 /*Begining of Corbin's code*/
 
 // placed in /new-post
-router.get('/new-post', (req, res)=>{
+router.get('/new-post', async (req, res)=>{
   try {
-    res.render("new-post", {
+    const data = await Tag.findAll()
+    const tags = data.map(tag=> tag.get({ plain: true }));
+    console.log("Tags: "+tags)
+    res.render("new-post", {tags,
       logged_in: req.session.logged_in,
     });
     } catch (err) {

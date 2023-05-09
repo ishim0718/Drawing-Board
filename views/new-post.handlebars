@@ -2,7 +2,13 @@
     <div class="primary-container p-5">
         <form>
             <label>Project Name</label>
-            <input type="text" id="new-title" class="ml-5"><br>
+            <input type="text" id="new-title" class="ml-5">
+            <select id="new-tag">
+            <!-- iterate existing tags-->
+                {{#each tags as |t|}}
+                <option value="{{t.id}}">{{t.name}}</option>
+                {{/each}}
+            </select><br>
 
             <label>Invention Photo</label>
             <input type="file" id="new-image" accept="image/png, image/jpeg" class="ml-5"><br>

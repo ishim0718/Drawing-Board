@@ -1744,6 +1744,9 @@ section{
 }
 body{
   background-color: #1bbc9b;
+  background-image: url("/images/pexels-iurii-laimin-9184517.jpg");
+  background-repeat: no-repeat;
+  background-size: inherit;
   font-family: 'Times New Roman', Times, serif;
   min-width: 975px;
 }
@@ -1759,7 +1762,7 @@ aside,
 section,
 #login-container,
 .primary-container{
-  background-color: lightgray;
+  background-color: rgb(211, 211, 211, .70);
   border: 2px solid black;
 }
 .user-post{
@@ -1805,4 +1808,8 @@ label{
 .post-view-pic{
   width: 70%;
   height: 200px;
+}
+.overflow-scroll{
+  overflow: auto;
+  height: 420px;
 }

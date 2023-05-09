@@ -8,13 +8,17 @@
     </aside>
     <section class="col-7 p-5 flex-column flex-no-wrap align-center gap-15" id="user-posts">
         <!-- iterate through previous projects -->
-        <div class="user-post p-3">
-            <h3>Project Name</h3>
-            <p>Descrpition...</p>
-        </div>
-        <div class="user-post p-3">
-            <h3>Project Name</h3>
-            <p>Descrpition...</p>
-        </div>
+
+        {{#each posts as |p|}}
+            <div class="user-post p-3">
+                <div class="flex-row flex-no-wrap">
+                    <div class="col-6"><h3>{{p.title}}</h3></div>
+                    <div class="col-6 my-auto text-right">{{format_date p.date_created}}</div>
+                </div>
+                <p>{{p.tag.name}}</p>
+                <p>{{p.description}}</p>
+            </div>
+        {{/each}}
+        
     </section>
 </div>
