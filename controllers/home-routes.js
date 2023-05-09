@@ -190,13 +190,14 @@ router.get("/search", async (req, res)=>{
       console.log("starting query")
       const postData = await Post.findAll({
         include: [
-          { model: User, attributes: ["name"] },
-          { model: Tag, attributes: ["name"] }
+          { model: User, attributes: ["name"] }
       ],
       }).catch(err=>console.log(err))
+      const tagData = await Tag.findAll()
       const posts = postData.map(post=> post.get({ plain: true }));
+      const tags = tagData.map(tag=> tag.get({ plain: true }));
       console.log("Post results:"+posts)
-      res.render("search", {posts})
+      res.render("search", {posts, tags})
     }catch(err){
       res.status(500).json(err)
     }

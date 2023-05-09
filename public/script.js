@@ -118,6 +118,7 @@ async function submitComment(){
     }
 }
 async function searchPosts(){
+    console.log("start search")
     try{
         let account = await fetch("/api/post",{
             method:"GET",
@@ -126,10 +127,27 @@ async function searchPosts(){
                 tag: document.getElementById("search-tag").value
             }
         })
-
+        console.log(account)
+        let resultsBox = document.getElementById('search-results')
+        let searches = ''
+        account.forEach((post)=>{
+            searches+=
+            `
+            <div class="col-8 user-post mb-5">
+                <div class="flex-row flex-no-wrap gap-80">
+                    <div class="col-4"><h3 class="ml-5">${post.title}</h3></div>
+                    <div class="col-4 my-auto">Tag:${post.tag_id}</div>
+                    <div class="col-4 my-auto"><span class="text-right">User:<b>${post.user.name}</b></span></div>
+                </div>
+                
+                <p>${post.description}</p>
+            </div>     
+            `
+        })
+        resultsBox.innerHTML = ''
     }catch(err){
         // display error message
-        
+        console.log(err)
     }
 }
 async function createAccount(){

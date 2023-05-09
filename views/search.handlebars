@@ -2,9 +2,10 @@
     <form class="flex-row flex-no-wrap justify-center gap-15 mb-5">
         <select id="search-tag">
             <!-- iterate existing tags-->
-            <option>Tag 1</option>
-            <option>Tag 2</option>
-            <option>Tag 3</option>
+            {{#each tags as |t|}}
+                <option value="{{t.id}}">{{t.name}}</option>
+            {{/each}}
+            
         </select>
         <input type="text" id="search-key">
         <input type="button" id="search-button" value="Search">
@@ -18,7 +19,6 @@
                     <div class="col-4 my-auto">Tag:{{p.tag.name}}</div>
                     <div class="col-4 my-auto"><span class="text-right">User:<b>{{p.user.name}}</b></span></div>
                 </div>
-            
             
             <p>{{p.description}}</p>
         </div>
