@@ -26,15 +26,15 @@ URL to deployed application:
 
 The application will start at the homepage. From there, you will need to either login or create an account if you want to view other pages of the website.
 
-![homepage]()
+![homepage](https://stark-sands-62559.herokuapp.com/)
 
 Once your credentials are verified, you can access your own dashboard, where you can look at your previous posts.
 
-![dashboard]()
+![dashboard](https://stark-sands-62559.herokuapp.com/dashboard)
 
 The user can also search posts by name and tag.
 
-![search]()
+![search](https://stark-sands-62559.herokuapp.com/search)
 
 
 ## Credits
