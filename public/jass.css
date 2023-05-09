@@ -1738,6 +1738,13 @@ header{
   padding-top: 30px;
   padding-bottom: 30px;
 }
+header,
+main{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
 aside,
 section{
   height: 700px;
