@@ -6,6 +6,8 @@ const submitNewPost = document.getElementById('submit-new-post')
 const searchButton = document.getElementById('search-button')
 const createAccountSubmit = document.getElementById('create-account-submit')
 const logoutButton = document.getElementById('logout')
+const updatePostButton = document.getElementById('update-post')
+const deletePostButton = document.getElementById('delete-post')
 
 async function getCloudImage(){
     let request = await fetch("https://storage.googleapis.com/storage/v1/b/inventor-website-123321/o",{
@@ -199,6 +201,36 @@ async function logout(){
     }
 }
 
+async function updatePost(){
+    let postID = document.getElementById('post-id').value
+    try{
+        let account = await fetch(`/api/posts/${postID}`,{
+            method:"PUT",
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                title: document.getElementById('title-edit-post').value,
+                description: document.getElementById('content-edit-post').value
+            })
+        })
+        
+    }catch(err){
+        // display error message
+        console.log(err)
+    }
+}
+async function deletePost(){
+    let postID = document.getElementById('post-id').value
+    try{
+        let account = await fetch(`/api/posts/${postID}`,{
+            method:"DELETE",
+        })
+        
+    }catch(err){
+        // display error message
+        console.log(err)
+    }
+}
+
 if(addCommentSubmit){
     addCommentSubmit.onclick = submitComment
 }
@@ -216,4 +248,10 @@ if(createAccountSubmit){
 }
 if(logoutButton){
     logoutButton.onclick = logout
+}
+if(updatePost){
+    updatePostButton.onclick = updatePost
+}
+if(deletePost){
+    deletePostButton.onclick = deletePost
 }
