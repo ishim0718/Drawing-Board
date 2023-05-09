@@ -137,6 +137,7 @@ router.get("/edit-post/:id", async (req, res) => {
 
     res.render("edit-post", {
       ...post,
+      post_id: req.params.id,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
