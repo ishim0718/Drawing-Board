@@ -105,7 +105,7 @@ async function signIn(){
 }
 async function submitComment(){
     try{
-        let account = await fetch("/comments",{
+        let account = await fetch("/api/comments",{
             method:"POST",
             body:{
                category: document.getElementById("add-comment-tag").value,
@@ -120,21 +120,28 @@ async function submitComment(){
 async function searchPosts(){
     console.log("start search")
     try{
-        let account = await fetch("/api/post",{
-            method:"GET",
-            body:{
-                name: document.getElementById("search-key").value,
-                tag: document.getElementById("search-tag").value
-            }
+        let key = document.getElementById("search-key").value
+        console.log(key)
+        let tag = document.getElementById("search-tag").value
+        console.log(tag)
+        let response = await fetch("/api/posts/search",{
+            method:"POST",
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                name: key,
+                tag: tag
+            })
         })
-        console.log(account)
+        let data = await response.json()
+        console.log(response)
+        console.log(data)
         let resultsBox = document.getElementById('search-results')
         let searches = ''
-        account.forEach((post)=>{
+        data.forEach((post)=>{
             searches+=
             `
             <div class="col-8 user-post mb-5">
-                <div class="flex-row flex-no-wrap gap-80">
+                <div class="flex-row flex-no-wrap gap-15">
                     <div class="col-4"><h3 class="ml-5">${post.title}</h3></div>
                     <div class="col-4 my-auto">Tag:${post.tag_id}</div>
                     <div class="col-4 my-auto"><span class="text-right">User:<b>${post.user.name}</b></span></div>
@@ -144,7 +151,8 @@ async function searchPosts(){
             </div>     
             `
         })
-        resultsBox.innerHTML = ''
+        console.log(searches)
+        resultsBox.innerHTML = searches
     }catch(err){
         // display error message
         console.log(err)

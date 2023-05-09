@@ -1,7 +1,7 @@
 <div class="flex-column flex-no-wrap align-center gap-15 primary-container p-5">
-    <h2>Post Title{{title}}</h2>
+    <h2>{{title}}</h2>
     <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="post-view-pic mt-3">
-    <p>Description...{{post.description}}</p>
+    <p>{{description}}</p>
     <div class="comment-section flex-column flex-no-wrap gap-15">
         <h3 class="text-center">Comments</h3>
         {{!--  --}}
@@ -17,12 +17,14 @@
         <div class="flex-row flex-no-wrap justify-center mt-5">
             <select id="add-comment-category" class="p-1 pr-4">
                 <!-- {{!-- Iterates through tags --}} -->
-                <option value="1">Category 1</option>
+                {{#each cats as |c|}}
+                <option value="{{c.id}}">{{c.name}}</option>
+                {{/each}}
             </select>
             <textarea placeholder="Write a comment..." id="add-comment-text" class="ml-2"></textarea>    
         </div>
         <div class="flex-row flex-no-wrap justify-center mt-5">
-            <input type="button" value="Post" id="add-comment-submit" class="btn">    
+            <input type="button" value="Post" id="add-comment-submit" class="btn btn-primary">    
         </div>
     </form>
 </div>
