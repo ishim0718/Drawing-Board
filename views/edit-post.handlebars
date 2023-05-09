@@ -1,26 +1,30 @@
-<main class="container mt-5">
-  <h1 class="mb-4">Edit Post</h1>
-  <form class="edit-post-form" class="mb-3">
-    <div class="mb-3">
-      <label for="title-edit-post" class="form-label">Title</label>
-      <input
-        type="text"
-        class="form-control"
-        id="title-edit-post"
-        placeholder="Enter post title"
-        value="{{title}}"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="content-edit-post" class="form-label">Content</label>
-      <textarea
-        class="form-control"
-        id="content-edit-post"
-        rows="3"
-        placeholder="Enter post content"
-      >{{content}}</textarea>
-    </div>
-    <button type="submit" id="edit-post" class="btn btn-primary">Update Post</button>
-    <button type="button" id="edit-post" class="btn btn-danger">Delete Post</button>
-  </form>
-</main>
+<div class="flex-row flex-no-wrap justify-center">
+  <div class="primary-container mt-5 p-5">
+    <h1 class="mb-4 text-center">Edit Post</h1>
+    <form class="edit-post-form" class="mb-3">
+      <div class="mb-3">
+        <label for="title-edit-post" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title-edit-post"
+          placeholder="Enter post title"
+          value="{{title}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="content-edit-post" class="form-label">Content</label>
+        <textarea
+          class="form-control"
+          id="content-edit-post"
+          rows="3"
+          placeholder="Enter post content"
+        >{{content}}</textarea>
+      </div>
+      <div class="flex-row flex-no-wrap justify-center gap-15">
+        <button type="button" id="update-post" class="btn btn-primary">Update Post</button>
+        <button type="button" id="delete-post" class="btn btn-danger">Delete Post</button>
+      </div>
+    </form>
+  </div>
+</div>

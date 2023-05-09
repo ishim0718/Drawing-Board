@@ -6,16 +6,20 @@
     		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
     		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     		<link rel="stylesheet" href="./jass.css">
+			<link rel="stylesheet" href="../jass.css">
 	</head>
 	<body>
 		<header class="m-3"> 
             <nav>
                 <ul class="nav-links">
                     <li><a href="/"><b>Home</b></a></li>
+					<li><a href="/dashboard"><b>Dashboard</b></a></li>
+					<li><a href="/new-post"><b>New Post</b></a></li>
+					<li><a href="/search"><b>Search</b></a></li>
 					{{#if logged_in}}
 					<li><a id="logout"><b>Logout</b></a></li>
 					{{else}}
-					<li><a href="/api/users/login"><b>Login</b></a></li>
+					<li><a href="/login"><b>Login</b></a></li>
 					{{/if}}
 				</ul>
             </nav>

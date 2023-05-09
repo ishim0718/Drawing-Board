@@ -9,7 +9,22 @@ router.get("/", async (req, res) => {
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["name"] }],
     });
-    res.status(200).json(postData);
+    let searchData = postData.map(post=>post.get({ plain: true }))
+    if(req.body.name && req.body.name!=''){
+      searchData = searchData.filter(post=>{
+        console.log(req.body.name)
+        console.log(post.title)
+        return post.title.includes(req.body.name)
+      })
+    }
+    if(req.body.tag && req.body.tag!=''){
+      console.log("req.body.tag"+req.body.tag)
+      searchData = searchData.filter(post=>{
+        console.log("post.tag: "+post.tag_id)
+        return post.tag_id==parseInt(req.body.tag)
+      })
+    }
+    res.status(200).json(searchData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -85,7 +100,36 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
-
+/*Start of Corbin's portion*/
+router.post("/search", async (req,res)=>{
+  try {
+    const postData = await Post.findAll({
+      include: [{ model: User, attributes: ["name"] }],
+    });
+    let searchData = postData.map(post=>post.get({ plain: true }))
+    console.log("req.body.name: "+req.body.name)
+    console.log("req.body.tag: "+req.body.tag)
+    if(req.body.name && req.body.name!=''){
+      searchData = searchData.filter(post=>{
+        console.log(req.body.name)
+        console.log(post.title)
+        return post.title.includes(req.body.name)
+      })
+    }
+    if(req.body.tag && req.body.tag!=''){
+      console.log("req.body.tag"+req.body.tag)
+      searchData = searchData.filter(post=>{
+        console.log("post.tag: "+post.tag_id)
+        return post.tag_id==parseInt(req.body.tag)
+      })
+    }
+    res.status(200).json(searchData);
+    return searchData
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+/*End of Corbin's portion*/
 
 // Export the router
 module.exports = router;

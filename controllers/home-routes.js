@@ -1,6 +1,6 @@
 // Import necessary packages and models
 const router = require("express").Router();
-const { Post, User, Comment, Tag } = require('../models');
+const { Post, User, Comment, Tag, Category } = require('../models');
 const withAuth = require("../utils/auth");
 const {Storage} = require('@google-cloud/storage')
 const Multer = require('multer')
@@ -53,11 +53,16 @@ router.get("/post/:id", withAuth, async (req, res) => {
         },
       ],
     });
+    const catData = await Category.findAll()
     // Convert post data to plain JavaScript object
+    console.log(JSON.stringify(postData))
     const post = postData.get({ plain: true });
+    const cats = catData.map(post=>post.get({ plain: true }));
+    console.log("test-error")
     // Render post template with post data and login status
     res.render("post", {
       ...post,
+      cats,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -106,13 +111,13 @@ router.get("/signup", (req, res) => {
 });
 
 //render the new post page
-router.get("/new-post", (req, res) => {
-  if (req.session.logged_in) {
-    res.render("new-post");
-    return;
-  }
-  res.redirect("/login");
-});
+// router.get("/new-post", (req, res) => {
+//   if (req.session.logged_in) {
+//     res.render("new-post");
+//     return;
+//   }
+//   res.redirect("/login");
+// });
 
 //render the edit post page
 router.get("/edit-post/:id", async (req, res) => {
@@ -142,17 +147,22 @@ router.get("/edit-post/:id", async (req, res) => {
 
 // placed in /new-post
 router.get('/new-post', async (req, res)=>{
-  try {
-    const data = await Tag.findAll()
-    const tags = data.map(tag=> tag.get({ plain: true }));
-    console.log("Tags: "+tags)
-    res.render("new-post", {tags,
-      logged_in: req.session.logged_in,
-    });
-    } catch (err) {
-        // If there is an error, return 500 status code and error message
-    res.status(500).json(err);
-    }
+  if (req.session.logged_in) {
+    try {
+      const data = await Tag.findAll()
+      const tags = data.map(tag=> tag.get({ plain: true }));
+      console.log("Tags: "+tags)
+      res.render("new-post", {
+        tags,
+        logged_in: req.session.logged_in,
+      });
+      } catch (err) {
+          // If there is an error, return 500 status code and error message
+        res.status(500).json(err);
+      }
+      return
+  }
+  res.redirect("/login");
 })
 
 // placed in /new-post
@@ -190,13 +200,14 @@ router.get("/search", async (req, res)=>{
       console.log("starting query")
       const postData = await Post.findAll({
         include: [
-          { model: User, attributes: ["name"] },
-          { model: Tag, attributes: ["name"] }
+          { model: User, attributes: ["name"] }
       ],
       }).catch(err=>console.log(err))
+      const tagData = await Tag.findAll()
       const posts = postData.map(post=> post.get({ plain: true }));
+      const tags = tagData.map(tag=> tag.get({ plain: true }));
       console.log("Post results:"+posts)
-      res.render("search", {posts})
+      res.render("search", {posts, tags})
     }catch(err){
       res.status(500).json(err)
     }
