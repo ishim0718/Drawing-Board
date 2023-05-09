@@ -20,11 +20,11 @@
             <div class="post-description" >
                 <div class="flex-row flex-no-wrap">
                     <!-- {{!-- insert specific post title --}} -->
-                    <div class="col-4 text-center"><h5><a href="/post/{{p.id}}"></a>{{post.title}}</h5></div>
+                    <div class="col-4 text-center"><h5><a href="/post/{{post.id}}">{{post.title}}</h5></a></div>
                     <!-- {{!-- insert specific post date --}} -->
                     <div class="col-4 text-center m-auto">Created on: {{format_date post.date_created}}</div>
                     <!-- {{!-- insert specific post tag --}} -->
-                    <div class="col-4 text-center m-auto">Tags: {{tag.name}}</div>
+                    <div class="col-4 text-center m-auto">Tags: {{post.tag_id}}</div>
                 </div>
                 <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="home-post-image mt-3">
             </div>
