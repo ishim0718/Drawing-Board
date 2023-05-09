@@ -26,20 +26,17 @@ URL to deployed application:
 
 The application will start at the homepage. From there, you will need to either login or create an account if you want to view other pages of the website.
 
-![homepage]()
-![homepage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/a8890239-7fc7-43fe-b6b3-2bf8838af723)
+![homepage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/db8f3e7e-8999-4bf8-ac4b-b41f0de6b418)
 
 
 Once your credentials are verified, you can access your own dashboard, where you can look at your previous posts.
 
-![dashboard]()
-![dashboardpage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/cba2cb5b-8636-4d5b-8f42-94e69ed4c7d8)
+![dashboardpage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/95ecbc9f-aab0-4620-bfe6-1ab3a21fe236)
 
 
 The user can also search posts by name and tag.
 
-![search]()
-![searchpage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/4fd56160-e1f8-45f2-b626-18c88c01bbfa)
+![searchpage](https://github.com/CorbinSpence/Drawing-Board/assets/120424655/0d63fe21-af49-44f4-8de7-7269d02f2a7f)
 
 
 ## Credits
