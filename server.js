@@ -11,7 +11,7 @@ const hbs = exphbs.create({ helpers });
 
 // Create express app and setting port
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Set up session object with secret, cookie, and store
 const sess = {
