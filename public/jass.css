@@ -1762,7 +1762,7 @@ aside,
 section,
 #login-container,
 .primary-container{
-  background-color: lightgray;
+  background-color: rgb(211, 211, 211, .70);
   border: 2px solid black;
 }
 .user-post{
