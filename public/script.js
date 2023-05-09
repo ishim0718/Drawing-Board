@@ -104,17 +104,20 @@ async function signIn(){
     
 }
 async function submitComment(){
+    console.log(document.getElementById("add-comment").value)
     try{
         let account = await fetch("/api/comments",{
             method:"POST",
-            body:{
-               category: document.getElementById("add-comment-tag").value,
-               comment: document.getElementById("add-comment-submit").value
-            }
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+               category_id: document.getElementById("add-comment-category").value,
+               comment: document.getElementById("add-comment-text").value,
+               post_id: document.getElementById("post-id").value
+            })
         })
     }catch(err){
         // display error message
-        
+        console.log(err)
     }
 }
 async function searchPosts(){

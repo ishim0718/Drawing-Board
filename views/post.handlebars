@@ -5,15 +5,15 @@
     <div class="comment-section flex-column flex-no-wrap gap-15">
         <h3 class="text-center">Comments</h3>
         {{!--  --}}
-        <div class="comment">
-            <span class="comment-user-link">User#1</span><span>: This could use more color.</span>
-        </div>
-        <div class="comment">
-            <span class="comment-user-link">User#2</span><span>: I agree with #1.</span>
-        </div>
+        {{#each comments as |c|}}
+            <div class="comment">
+                <span class="comment-user-link">{{user.name}}</span><span>: {{c.comment}} </span>
+            </div>
+        {{/each}}
     </div>
     {{!-- New comment in this block --}}
     <form id="add-comment">
+        <input type="hidden" id="post-id" value="{{post_id}}">
         <div class="flex-row flex-no-wrap justify-center mt-5">
             <select id="add-comment-category" class="p-1 pr-4">
                 <!-- {{!-- Iterates through tags --}} -->
