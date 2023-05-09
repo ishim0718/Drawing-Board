@@ -12,9 +12,12 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="/"><b>Home</b></a></li>
-                    <li><a href="/api/users/login"><b>Login</b></a></li>
+					{{#if logged_in}}
 					<li><a id="logout"><b>Logout</b></a></li>
-                </ul>
+					{{else}}
+					<li><a href="/api/users/login"><b>Login</b></a></li>
+					{{/if}}
+				</ul>
             </nav>
             <div class="text-center"><h1>Drawing Board</h1></div>
         </header>
