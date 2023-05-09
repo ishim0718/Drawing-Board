@@ -25,11 +25,14 @@ router.get("/", async (req, res) => {
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["name"] }],
     });
+    const tagData = await Tag.findAll()
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
     // Render homepage template with posts and login status
     res.render("homepage", {
       posts,
+      tags,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

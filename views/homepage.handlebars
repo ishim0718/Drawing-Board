@@ -6,7 +6,11 @@
             <h3>Tags</h3>
             <div id="search-tags" class="flex-row flex-no-wrap justify-center">
                 <!-- {{!-- Iterates through tags --}} -->
-                <div>tag 1</div>
+                <select id="search-tags">
+                    {{#each tags as |t|}}
+                    <option value="{{t.id}}">{{t.name}}</option>
+                    {{/each}}
+                </select>
             </div>
         </div>
     </aside>
