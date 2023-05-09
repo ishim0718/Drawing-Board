@@ -20,7 +20,7 @@
             <div class="post-description" >
                 <div class="flex-row flex-no-wrap">
                     <!-- {{!-- insert specific post title --}} -->
-                    <div class="col-4 text-center"><h5>{{post.title}}</h5></div>
+                    <div class="col-4 text-center"><h5><a href="/post/{{p.id}}"></a>{{post.title}}</h5></div>
                     <!-- {{!-- insert specific post date --}} -->
                     <div class="col-4 text-center m-auto">Created on: {{format_date post.date_created}}</div>
                     <!-- {{!-- insert specific post tag --}} -->
