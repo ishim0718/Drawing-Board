@@ -43,10 +43,10 @@ router.get("/post/:id", withAuth, async (req, res) => {
         // Find post by ID with associated username and comments with associated usernames
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["username"] },
+        { model: User, attributes: ["name"] },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["username"] }],
+          include: [{ model: User, attributes: ["name"] }],
         },
       ],
     });
@@ -68,7 +68,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
-      include: [{ model: User, attributes: ["username"] }],
+      include: [{ model: User, attributes: ["name"] }],
     });
     // Convert post data to plain JavaScript object
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -99,30 +99,30 @@ router.get("/signup", (req, res) => {
 });
 
 //render the new post page
-router.get("/newpost", (req, res) => {
+router.get("/new-post", (req, res) => {
   if (req.session.logged_in) {
-    res.render("newpost");
+    res.render("new-post");
     return;
   }
   res.redirect("/login");
 });
 
 //render the edit post page
-router.get("/editpost/:id", async (req, res) => {
+router.get("/edit-post/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["username"] },
+        { model: User, attributes: ["name"] },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["username"] }],
+          include: [{ model: User, attributes: ["name"] }],
         },
       ],
     });
 
     const post = postData.get({ plain: true });
 
-    res.render("editpost", {
+    res.render("edit-post", {
       ...post,
       logged_in: req.session.logged_in,
     });
