@@ -106,16 +106,16 @@ router.get("/signup", (req, res) => {
 });
 
 //render the new post page
-router.get("/newpost", (req, res) => {
+router.get("/new-post", (req, res) => {
   if (req.session.logged_in) {
-    res.render("newpost");
+    res.render("new-post");
     return;
   }
   res.redirect("/login");
 });
 
 //render the edit post page
-router.get("/editpost/:id", async (req, res) => {
+router.get("/edit-post/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -129,7 +129,7 @@ router.get("/editpost/:id", async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    res.render("editpost", {
+    res.render("edit-post", {
       ...post,
       logged_in: req.session.logged_in,
     });
