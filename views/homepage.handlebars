@@ -9,7 +9,7 @@
                 <select id="search-tags">
                     {{#each tags as |t|}}
                     <option value="{{t.id}}">{{t.name}}</option>
-                    {{/each}}
+                    
                 </select>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     <!-- {{!-- insert specific post date --}} -->
                     <div class="col-4 text-center m-auto">Created on: {{format_date post.date_created}}</div>
                     <!-- {{!-- insert specific post tag --}} -->
-                    <div class="col-4 text-center m-auto">Tags: {{post.tag_id}}</div>
+                    <div class="col-4 text-center m-auto">Tags: {{t.name}}</div>
                 </div>
                 <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" alt="Invention Image"class="home-post-image mt-3">
             </div>
@@ -42,6 +42,7 @@
                     </div>
                 </form>
             </div>
+            {{/each}}
             {{/each}}
         </div>
         
