@@ -1732,6 +1732,7 @@ form [type='radio'] {
 }
 .nav-links li a:hover{
   background-color: white;
+  transition-duration: 1s;
 }
 header{
   padding-top: 30px;
